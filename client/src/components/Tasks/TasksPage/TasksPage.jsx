@@ -1,0 +1,29 @@
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import { useDispatch, useSelector } from 'react-redux';
+import OneTaskInput from '../OneTaskInput/OneTaskInput';
+import TasksList from '../TasksList/TasksList';
+// import { fetchNotes } from '../../redux/actions/notesAction';
+
+export default function TasksPage() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  React.useEffect(() => {
+    dispatch({ type: 'FETCH_TASKS', payload: user?.id });
+  }, []);
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={1} columns={16}>
+        <Grid item xs={7} sx={{ mt: '5em', pr: '1em' }}>
+          <TasksList />
+        </Grid>
+        <Grid item xs={9} sx={{ backgroundColor: '#ededed', height: '101vh' }}>
+          <Box sx={{ p: '1em 1em 0 1em' }}>
+            <OneTaskInput />
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
+  );
+}
