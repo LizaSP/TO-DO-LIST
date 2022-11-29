@@ -66,10 +66,12 @@ export default function CreateTask() {
                 <TextField
                   required
                   fullWidth
+                  multiline
+                  rows={6}
                   name="body"
                   label="Task..."
                   type="text"
-                  id="body"
+                  // id="body"
                   // value={inputs.body}
                   // onChange={(e) => setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))}
                 />
@@ -89,40 +91,3 @@ export default function CreateTask() {
     </ThemeProvider>
   );
 }
-// <>
-//   <div style={{ height: '5em' }} />
-//   <from onSubmit={(e) => submitHandler(e, inputs)}>
-//     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-//       <input
-//         className="input is-rounded"
-//         type="text"
-//         name="title"
-//         placeholder="Title"
-//         value={inputs.title}
-//         onChange={(e) => setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))}
-//         style={{
-//           backgroundColor: '#ededed', border: 'none', boxShadow: 'none', fontWeight: 'bold', fontSize: 'larger', width: '70%',
-//         }}
-//       />
-//       <IconButton type="submit" edge="end" aria-label="comments">
-//         <EditIcon />
-//       </IconButton>
-//     </div>
-//     <br />
-//     <br />
-//     <textarea
-//       className="textarea"
-//       placeholder="Type here..."
-//       rows="38"
-//       name="body"
-//       value={inputs.body}
-//       onChange={(e) => {
-//       // console.log(3, inputs);
-//         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-//       }}
-//       style={{
-//         backgroundColor: '#ededed', border: 'none', boxShadow: 'none', width: '90%', minWidth: '90%',
-//       }}
-//     />
-//   </from>
-// </>

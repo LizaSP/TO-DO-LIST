@@ -50,8 +50,10 @@ router.route('/:id/edit')
     // console.log(req.body);
     const { title, body } = req.body;
     const { id } = req.params;
-    console.log(id);
-    const updatedTask = await Task.update({ title, body }, { where: { id } });
+    const updatedTask = await Task.update(
+      { title, body },
+      { where: { id }, returning: true, plain: true },
+    );
     res.json(updatedTask[1]);
   });
 

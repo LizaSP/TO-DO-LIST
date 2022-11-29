@@ -35,13 +35,11 @@ export default function MainPage() {
         }}
       >
         <Routes>
+          <Route path="/" element={<TasksPage />} />
           <Route path="/allTasks" element={<TasksPage />} />
           <Route path="/tasks/new" element={<CreateTask />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
-        {/* <Typography paragraph>
-          to dos will be here
-        </Typography> */}
       </Box>
     </Box>
   );

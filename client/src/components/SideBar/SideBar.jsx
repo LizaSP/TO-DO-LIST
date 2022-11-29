@@ -15,14 +15,14 @@ import MailIcon from '@mui/icons-material/Mail';
 export default function SideBar({ drawerWidth }) {
   const menu = [
     { text: 'All Tasks', icon: <InboxIcon />, link: '/allTasks' },
-    { text: 'Albums', icon: <InboxIcon />, link: '/albums' },
-    { text: 'Favourites', icon: <InboxIcon />, link: '/favourites' },
-    { text: 'Tags', icon: <InboxIcon />, link: '/tags' },
+    // { text: 'Albums', icon: <InboxIcon />, link: '/albums' },
+    // { text: 'Favourites', icon: <InboxIcon />, link: '/favourites' },
+    // { text: 'Tags', icon: <InboxIcon />, link: '/tags' },
   ];
   const menu2 = [
     { text: 'Create Task', icon: <EditIcon />, link: '/tasks/new' },
-    { text: 'Create Album', icon: <EditIcon />, link: '/albums/new' },
-    { text: 'Create Tag', icon: <EditIcon />, link: '/tags/new' },
+    // { text: 'Create Album', icon: <EditIcon />, link: '/albums/new' },
+    // { text: 'Create Tag', icon: <EditIcon />, link: '/tags/new' },
   ];
   return (
     <Drawer

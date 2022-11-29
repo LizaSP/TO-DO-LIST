@@ -15,7 +15,7 @@ function* TasksSagaWorker(action) {
     const res = yield call(getTasksWithAxios, action.payload);
     yield put(setTasks(res.data));
   } catch (e) {
-    yield put({ type: 'USER_FETCH_FAILED', message: e.message });
+    yield put({ type: 'FETCH_TASKS_FAILED', message: e.message });
   }
 }
 
@@ -30,7 +30,7 @@ function* deleteTasksSagaWorker(action) {
     yield call(deleteTasksWithAxios, action.payload);
     yield put(deleteTask(action.payload));
   } catch (e) {
-    yield put({ type: 'USER_FETCH_FAILED', message: e.message });
+    yield put({ type: 'FETCH_DELETE_TASK_FAILED', message: e.message });
   }
 }
 
@@ -42,12 +42,10 @@ function* deleteTaskSagaWatcher() {
 const addTaskWithAxios = (input) => axios.post('http://localhost:3002/api/tasks', input);
 function* addTaskSagaWorker(action) {
   try {
-    console.log(action.payload);
     const res = yield call(addTaskWithAxios, action.payload);
-    console.log(res.data);
     yield put(addTask(res.data));
   } catch (e) {
-    yield put({ type: 'USER_FETCH_FAILED', message: e.message });
+    yield put({ type: 'FETCH_ADD_TASK_FAILED', message: e.message });
   }
 }
 
@@ -61,10 +59,9 @@ function* updateTaskSagaWorker(action) {
   try {
     // console.log(action.payload);
     const res = yield call(updateTaskWithAxios, action.payload);
-    // console.log(res.data);
     yield put(updateTask(res.data));
   } catch (e) {
-    yield put({ type: 'USER_FETCH_FAILED', message: e.message });
+    yield put({ type: 'FETCH_UPDATE_TASK_FAILED', message: e.message });
   }
 }
 
@@ -72,7 +69,6 @@ function* updateTaskSagaWatcher() {
   yield takeEvery('FETCH_UPDATE_TASK', updateTaskSagaWorker);
 }
 
-// update one task
 const handleToggleWithAxios = (input) => axios.patch(`http://localhost:3002/api/tasks/${input}`, {});
 function* handleToggleSagaWorker(action) {
   try {
@@ -81,7 +77,7 @@ function* handleToggleSagaWorker(action) {
     // console.log(res.data);
     yield put(checked(action.payload));
   } catch (e) {
-    yield put({ type: 'USER_FETCH_FAILED', message: e.message });
+    yield put({ type: 'FETCH_UPDATE_CHECKED_FAILED', message: e.message });
   }
 }
 

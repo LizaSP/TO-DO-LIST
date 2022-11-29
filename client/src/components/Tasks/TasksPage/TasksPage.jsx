@@ -12,17 +12,31 @@ export default function TasksPage() {
   React.useEffect(() => {
     dispatch({ type: 'FETCH_TASKS', payload: user?.id });
   }, []);
+  const tasks = useSelector((s) => s.tasks);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1} columns={16}>
         <Grid item xs={7} sx={{ mt: '5em', pr: '1em' }}>
           <TasksList />
         </Grid>
-        <Grid item xs={9} sx={{ backgroundColor: '#ededed', height: '101vh' }}>
-          <Box sx={{ p: '1em 1em 0 1em' }}>
-            <OneTaskInput />
-          </Box>
-        </Grid>
+        {tasks?.length
+          ? (
+            <Grid item xs={9} sx={{ backgroundColor: '#ededed', height: '101vh' }}>
+              <Box sx={{ p: '1em 1em 0 1em' }}>
+                <OneTaskInput />
+              </Box>
+            </Grid>
+          ) : (
+            <div style={{ position: 'relative', minHeight: 'calc(100vh - 70px)' }}>
+              <h2
+                style={{
+                  width: '10em', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                }}
+              >
+                You have no tasks.
+              </h2>
+            </div>
+          )}
       </Grid>
     </Box>
   );

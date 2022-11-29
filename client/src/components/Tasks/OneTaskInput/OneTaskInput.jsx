@@ -23,13 +23,12 @@ export default function OneTaskInput() {
   }, [selected, tasks]);
 
   const editHandler = async (e) => {
-    dispatch({ type: 'FETCH_UPDATE_TASK', payload: { task, id: task.id } });
-    dispatch({ type: 'FETCH_TASKS', payload: user?.id });
+    dispatch({ type: 'FETCH_UPDATE_TASK', payload: { task, id: task?.id } });
   };
 
   const deleteHandler = async (e) => {
     e.stopPropagation();
-    dispatch({ type: 'FETCH_DELETE_TASK', payload: task.id });
+    dispatch({ type: 'FETCH_DELETE_TASK', payload: task?.id });
     dispatch({ type: 'FETCH_TASKS', payload: user?.id });
     dispatch(setSelected(tasks[0].id));
   };
@@ -69,7 +68,6 @@ export default function OneTaskInput() {
             name="body"
             value={task?.body}
             onChange={(e) => {
-              // console.log(3, inputs);
               setTask((prev) => ({ ...prev, [e.target.name]: e.target.value }));
             }}
             style={{

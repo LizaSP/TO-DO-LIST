@@ -19,7 +19,6 @@ function App() {
   const user = useSelector((state) => state.user);
   return (
     <LoaderWrapper>
-      {/* <NavBar /> */}
       <Routes>
         <Route element={<ProtectedRoute redirect="/" isAllowed={!user.id} />}>
           <Route path="/signup" element={<SignUpPage type />} />
@@ -27,9 +26,7 @@ function App() {
         </Route>
         <Route element={<ProtectedRoute redirect="/login" isAllowed={!!user.id} />}>
           <Route path="/*" element={<MainPage />} />
-          {/* <Route path="/home" element={<HomePage />} /> */}
         </Route>
-        {/* <Route path="*" element={<NoPage />} /> */}
       </Routes>
     </LoaderWrapper>
   );
